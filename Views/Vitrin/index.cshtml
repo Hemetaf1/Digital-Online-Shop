@@ -1,0 +1,71 @@
+@model IEnumerable<MvcMovie.Models.Phone>
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+  <title>Mobile Phones</title>
+
+  <style>
+    body {
+      background-color: #000;  /* Black background */
+      color: #f3bcf5;             /* White text for better contrast */
+    }
+
+    .card {
+      border: 2px solid #9A00E6; /* Thicker purple border (adjust color as needed) */
+    }
+
+    .card-title, .card-text {
+      color: #c887ee;  /* White text for titles and descriptions within cards */
+    }
+    .card-body {
+      background-color: #160120; /* Set card body background to purple */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form method="get" asp-action="Index" class="d-flex mb-3">
+      <div class="form-group me-2">
+        <label for="searchString" class="form-label">Search by Name:</label>
+        <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewData["currentFilter"]" />
+      </div>
+      <div class="form-group me-2">
+        <label for="minPrice" class="form-label">Minimum Price:</label>
+        <input type="number" class="form-control" id="minPrice" name="minPrice" min="100" max="1500" value="@(ViewData["minPrice"] ?? 100)"> </div>
+      <div class="form-group me-2">
+        <label for="maxPrice" class="form-label">Maximum Price:</label>
+        <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="100" max="1500" value="@(ViewData["maxPrice"] ?? 1500)"> </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <br />
+
+    @if (Model.Any())
+    {
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+          <div class="col">
+            <div class="card">
+              <a asp-action="Details" asp-route-id="@item.Id">
+                <img src="@item.ImageUrl" class="card-img-top" alt="Phone image" />
+                <div class="card-body">
+                  <h3 class="card-title">@item.Name</h3>
+                  <p class="card-text">@item.Price.ToString("C")</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+</body>
+</html>
