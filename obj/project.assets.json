@@ -8199,11 +8199,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/hemetaf/MvcPhone/MvcPhone.csproj",
+      "projectUniqueName": "/home/hemetaf/MvcPP/DigitalOnlineShop/MvcPhone.csproj",
       "projectName": "MvcPhone",
-      "projectPath": "/home/hemetaf/MvcPhone/MvcPhone.csproj",
+      "projectPath": "/home/hemetaf/MvcPP/DigitalOnlineShop/MvcPhone.csproj",
       "packagesPath": "/home/hemetaf/.nuget/packages/",
-      "outputPath": "/home/hemetaf/MvcPhone/obj/",
+      "outputPath": "/home/hemetaf/MvcPP/DigitalOnlineShop/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/hemetaf/.nuget/NuGet/NuGet.Config"

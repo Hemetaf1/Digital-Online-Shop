@@ -17,67 +17,91 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MvcPhone
 build_property.RootNamespace = MvcPhone
-build_property.ProjectDir = /home/hemetaf/MvcPhone/
+build_property.ProjectDir = /home/hemetaf/MvcPP/DigitalOnlineShop/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/hemetaf/MvcPhone
+build_property.MSBuildProjectDirectory = /home/hemetaf/MvcPP/DigitalOnlineShop
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/hemetaf/MvcPhone/Views/Home/Index.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Home/Category/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYXRlZ29yeS9BZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Home/Category/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYXRlZ29yeS9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Home/Privacy.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Phone/Create.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Phone/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGhvbmUvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Phone/Delete.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Phone/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGhvbmUvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Phone/Details.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Phone/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGhvbmUvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Phone/Edit.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Phone/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGhvbmUvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Phone/Index.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Phone/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGhvbmUvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Shared/Error.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Product/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Product/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Vitrin/Details.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Vitrin/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVml0cmluL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Vitrin/index.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Vitrin/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVml0cmluL2luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/_ViewImports.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/_ViewStart.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/hemetaf/MvcPhone/Views/Shared/_Layout.cshtml]
+[/home/hemetaf/MvcPP/DigitalOnlineShop/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-524ytnjf20

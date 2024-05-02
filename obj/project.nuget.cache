@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AYJ83HlX+6RK/a5qJCGjdwNktOJrSCAJB+58Ml3lGNND6RsKBuwN/8pF1VgbQv1SzyT/KSLepi60uy0HuL5iZQ==",
+  "dgSpecHash": "jv+4x3k79V97A/1T5VlSmVSddufPx7o/ZzhYp90kMjP9gZy84kQHRx9QPr715GWWAkUyYborB+e4oL5IOa5eng==",
   "success": true,
-  "projectFilePath": "/home/hemetaf/MvcPhone/MvcPhone.csproj",
+  "projectFilePath": "/home/hemetaf/MvcPP/DigitalOnlineShop/MvcPhone.csproj",
   "expectedPackageFiles": [
     "/home/hemetaf/.nuget/packages/azure.core/1.35.0/azure.core.1.35.0.nupkg.sha512",
     "/home/hemetaf/.nuget/packages/azure.identity/1.10.3/azure.identity.1.10.3.nupkg.sha512",
