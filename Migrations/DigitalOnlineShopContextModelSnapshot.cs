@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DigitalOnlineShop.Migrations
+namespace MvcPhone.Migrations
 {
     [DbContext(typeof(DigitalOnlineShopContext))]
     partial class DigitalOnlineShopContextModelSnapshot : ModelSnapshot
@@ -99,12 +99,21 @@ namespace DigitalOnlineShop.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            Name = "Vivobook r655",
+                            Price = 3000.02m
+                        });
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Field", b =>
                 {
                     b.HasOne("MvcMovie.Models.Category", "Category")
-                        .WithMany("FieldValues")
+                        .WithMany("Fields")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -144,7 +153,7 @@ namespace DigitalOnlineShop.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Category", b =>
                 {
-                    b.Navigation("FieldValues");
+                    b.Navigation("Fields");
 
                     b.Navigation("Products");
                 });

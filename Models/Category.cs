@@ -12,8 +12,8 @@ public class Category
     public int parent_id {get; set;}
 
     // Define the inverse relationship using [InverseProperty]
-    public ICollection<Product> Products { get; set; } // Navigation property
-    public ICollection<Field> FieldValues { get; set; } // Navigation property
+    public IEnumerable<Product> Products { get; set; } // Navigation property
+    public IEnumerable<Field> Fields { get; set; } // Navigation property
 
 }
 

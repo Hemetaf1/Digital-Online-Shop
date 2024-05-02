@@ -1,4 +1,4 @@
-@model IEnumerable<MvcMovie.Models.Phone>
+@model IEnumerable<MvcMovie.Models.Product>
 
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -6,7 +6,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-  <title>Mobile Phones</title>
+  <title>Mobile Products</title>
 
   <style>
     body {
@@ -53,7 +53,6 @@
           <div class="col">
             <div class="card">
               <a asp-action="Details" asp-route-id="@item.Id">
-                <img src="@item.ImageUrl" class="card-img-top" alt="Phone image" />
                 <div class="card-body">
                   <h3 class="card-title">@item.Name</h3>
                   <p class="card-text">@item.Price.ToString("C")</p>

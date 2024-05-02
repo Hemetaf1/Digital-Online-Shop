@@ -2,38 +2,14 @@
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace MvcPhone.Migrations
 {
     /// <inheritdoc />
-    public partial class Product : Migration
+    public partial class ProductAdd2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "Product",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "Product",
-                keyColumn: "Id",
-                keyValue: 2);
-
-            migrationBuilder.DeleteData(
-                table: "Product",
-                keyColumn: "Id",
-                keyValue: 3);
-
-            migrationBuilder.AddColumn<int>(
-                name: "CategoryId",
-                table: "Product",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: 0);
-
             migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
@@ -69,6 +45,27 @@ namespace MvcPhone.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Product",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Product", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Product_Category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FieldValue",
                 columns: table => new
                 {
@@ -95,10 +92,10 @@ namespace MvcPhone.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Product_CategoryId",
+            migrationBuilder.InsertData(
                 table: "Product",
-                column: "CategoryId");
+                columns: new[] { "Id", "CategoryId", "Name", "Price" },
+                values: new object[] { 3, 1, "Vivobook r655", 3000.02m });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Field_CategoryId",
@@ -115,22 +112,15 @@ namespace MvcPhone.Migrations
                 table: "FieldValue",
                 column: "ProductId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Product_Category_CategoryId",
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_CategoryId",
                 table: "Product",
-                column: "CategoryId",
-                principalTable: "Category",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                column: "CategoryId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Product_Category_CategoryId",
-                table: "Product");
-
             migrationBuilder.DropTable(
                 name: "FieldValue");
 
@@ -138,25 +128,10 @@ namespace MvcPhone.Migrations
                 name: "Field");
 
             migrationBuilder.DropTable(
+                name: "Product");
+
+            migrationBuilder.DropTable(
                 name: "Category");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Product_CategoryId",
-                table: "Product");
-
-            migrationBuilder.DropColumn(
-                name: "CategoryId",
-                table: "Product");
-
-            migrationBuilder.InsertData(
-                table: "Product",
-                columns: new[] { "Id", "Name", "Price" },
-                values: new object[,]
-                {
-                    { 1, "Dell XPS 13", 1099.99m },
-                    { 2, "MacBook Pro 13-inch", 1299.00m },
-                    { 3, "Lenovo ThinkPad X1 Carbon", 1399.99m }
-                });
         }
     }
 }

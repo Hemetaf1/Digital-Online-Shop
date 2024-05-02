@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MvcPhone.Migrations
 {
     [DbContext(typeof(DigitalOnlineShopContext))]
-    [Migration("20240502122034_Product")]
-    partial class Product
+    [Migration("20240502170234_ProductAdd2")]
+    partial class ProductAdd2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,12 +102,21 @@ namespace MvcPhone.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            Name = "Vivobook r655",
+                            Price = 3000.02m
+                        });
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Field", b =>
                 {
                     b.HasOne("MvcMovie.Models.Category", "Category")
-                        .WithMany("FieldValues")
+                        .WithMany("Fields")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -147,7 +156,7 @@ namespace MvcPhone.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Category", b =>
                 {
-                    b.Navigation("FieldValues");
+                    b.Navigation("Fields");
 
                     b.Navigation("Products");
                 });

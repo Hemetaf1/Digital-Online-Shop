@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Models;
-using MvcPhone.Data;
+using DigitalOnlineShop.Data;
 
 namespace MvcPhone.Controllers
 {
  public class VitrinController : Controller
 {
-    private readonly MvcPhoneContext _context;
+    private readonly DigitalOnlineShopContext _context;
 
-    public VitrinController(MvcPhoneContext context)
+    public VitrinController(DigitalOnlineShopContext context)
     {
         _context = context;
     }
@@ -22,7 +22,7 @@ namespace MvcPhone.Controllers
     // GET: Phone
     public async Task<IActionResult> Index(string searchString, decimal? minPrice, decimal? maxPrice)
     {
-        var phones = from m in _context.Phone
+        var phones = from m in _context.Product
                     select m;
 
         if (!String.IsNullOrEmpty(searchString))
@@ -52,7 +52,7 @@ namespace MvcPhone.Controllers
             return NotFound();
         }
 
-        var phone = await _context.Phone
+        var phone = await _context.Product
                 .FirstOrDefaultAsync(m => m.Id == id);
         if (phone == null)
         {

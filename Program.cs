@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MvcPhone.Data;
+using DigitalOnlineShop.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<MvcPhoneContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("MvcPhoneContext") ?? throw new InvalidOperationException("Connection string 'MvcPhoneContext' not found.")));
+builder.Services.AddDbContext<DigitalOnlineShopContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DigitalOnlineShopContext") ?? throw new InvalidOperationException("Connection string 'DigitalOnlineShopContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcMovie.Models;
-using MvcPhone.Data;
+using DigitalOnlineShop.Data;
 
 public class Decimal18Converter : ValueConverter<decimal, decimal>
 {
