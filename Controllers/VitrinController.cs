@@ -22,7 +22,7 @@ namespace MvcPhone.Controllers
     // GET: Phone
     public async Task<IActionResult> Index(string searchString, decimal? minPrice, decimal? maxPrice)
     {
-        var phones = from m in _context.Product
+        var phones = from m in _context.Products
                     select m;
 
         if (!String.IsNullOrEmpty(searchString))
@@ -52,7 +52,7 @@ namespace MvcPhone.Controllers
             return NotFound();
         }
 
-        var phone = await _context.Product
+        var phone = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
         if (phone == null)
         {

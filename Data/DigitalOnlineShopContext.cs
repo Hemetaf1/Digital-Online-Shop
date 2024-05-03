@@ -1,87 +1,45 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MvcMovie.Models;
-using System.Linq;
+using MvcMovie.Models; // Assuming Product and Category classes are in this namespace
+using System.Collections.Generic;
+
 namespace DigitalOnlineShop.Data
 {
-
-    
-      public static class ProductSeedData
+    public static class SeedData
+    {
+        public static IEnumerable<Product> GetProducts()
         {
-            public static IEnumerable<Product> GetProducts()
-            {
-                
-                yield return new Product { Id = 3, Name = "Vivobook r655",CategoryId = 1, Price = 3000.02m};
-                // ... add more Products ...
-            }
+            yield return new Product { Id = 3, Name = "Vivobook r655", CategoryId = 1, Price = 3000.02m };
+            // Add more Products as needed
         }
 
-    public static class CategorySeedData
-            {
-                public static IEnumerable<Category> GetProducts()
-                {
-                    
-                    yield return new Category { Id = 1, Name = "Laptop"};
-                    // ... add more Products ...
-                }
-            }
+        public static IEnumerable<Category> GetCategories()
+        {
+            yield return new Category { Id = 1, Name = "Laptop" };
+            // Add more Categories as needed
+        }
+    }
 
     public class DigitalOnlineShopContext : DbContext
     {
-        public DigitalOnlineShopContext (DbContextOptions<DigitalOnlineShopContext> options)
-            : base(options)
+        public DigitalOnlineShopContext(DbContextOptions<DigitalOnlineShopContext> options) : base(options)
         {
         }
 
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Product>()
-            .Property(p => p.Price)
-            .HasConversion(new Decimal18Converter());
+        public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
 
-       /* modelBuilder.Entity<Product>().HasMany(p => p.FieldValues)
-        .WithOne().OnDelete(DeleteBehavior.Cascade);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Configure Price property conversion
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Price)
+                .HasConversion<decimal>();
 
-        modelBuilder.Entity<Category>().HasMany(p => p.Fields)
-        .WithOne().OnDelete(DeleteBehavior.Cascade);
-        
-        modelBuilder.Entity<Category>().HasMany(p => p.Products)
-        .WithOne().OnDelete(DeleteBehavior.Cascade); */
+            // Seed initial data
+            modelBuilder.Entity<Product>().HasData(SeedData.GetProducts());
+            modelBuilder.Entity<Category>().HasData(SeedData.GetCategories());
 
-    // Configure the relationship between Field and Category
-
-
-          modelBuilder.Entity<Product>()
-         .HasMany(p => p.FieldValues)
-         .WithOne(f => f.Product)
-         .HasForeignKey(f=>f.ProductId);
-
-          modelBuilder.Entity<Category>()
-         .HasMany(c => c.Products)
-         .WithOne(p => p.Category)
-         .HasForeignKey(p=>p.CategoryId);
-
-         modelBuilder.Entity<Field>()
-        .HasOne(f => f.Category)
-        .WithMany(c => c.Fields)  // Assuming Category has a collection of Fields
-        .HasForeignKey(f => f.CategoryId);
-
-    // Additional configurations...
-
-    base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Product>().HasData(ProductSeedData.GetProducts());
-
+            // Additional configurations...
+        }
     }
-    
-
-        public DbSet<MvcMovie.Models.Product> Product { get; set; } = default!;
-        public DbSet<MvcMovie.Models.Category> Category { get; set; } = default!;
-
-        
-    }
-
-
 }

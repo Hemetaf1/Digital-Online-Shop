@@ -21,12 +21,12 @@ namespace DigitalOnlineShop.Controllers
 
         public async Task<IActionResult> Index(string searchString)
         {
-            if (_context.Category == null)
+            if (_context.Categories == null)
             {
                 return Problem("Entity set 'DigitalOnlineShopContext.Category' is null.");
             }
 
-            var categories = from m in _context.Category
+            var categories = from m in _context.Categories
                              select m;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -57,7 +57,7 @@ namespace DigitalOnlineShop.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category.FindAsync(id);
+            var category = await _context.Categories.FindAsync(id);
             if (category == null)
             {
                 return NotFound();
@@ -99,7 +99,7 @@ namespace DigitalOnlineShop.Controllers
 
         private bool CategoryExists(int id)
         {
-            return _context.Category.Any(e => e.Id == id);
+            return _context.Categories.Any(e => e.Id == id);
         }
     }
 }

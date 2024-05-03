@@ -23,12 +23,12 @@ namespace DigitalOnlineShop.Controllers
         
         public async Task<IActionResult> Index(string searchString)
         {
-                 if (_context.Product == null)
+                 if (_context.Products == null)
                 {
                     return Problem("Entity set 'MvcMovieContext.Phone'  is null.");
                 }
 
-                var products = from m in _context.Product
+                var products = from m in _context.Products
                             select m;
 
                 if (!String.IsNullOrEmpty(searchString))
@@ -48,7 +48,7 @@ namespace DigitalOnlineShop.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
@@ -103,7 +103,7 @@ namespace DigitalOnlineShop.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -154,7 +154,7 @@ namespace DigitalOnlineShop.Controllers
                 return NotFound();
             }
 
-            var product = await _context.Product
+            var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
@@ -169,10 +169,10 @@ namespace DigitalOnlineShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product = await _context.Product.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
-                _context.Product.Remove(product);
+                _context.Products.Remove(product);
             }
 
             await _context.SaveChangesAsync();
@@ -181,7 +181,7 @@ namespace DigitalOnlineShop.Controllers
 
         private bool ProductExists(int id)
         {
-            return _context.Product.Any(e => e.Id == id);
+            return _context.Products.Any(e => e.Id == id);
         }
     }
 }

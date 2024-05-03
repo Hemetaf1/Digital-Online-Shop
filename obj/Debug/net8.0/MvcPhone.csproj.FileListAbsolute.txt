@@ -831,3 +831,5 @@
 /home/hemetaf/MvcPP/DigitalOnlineShop/obj/Debug/net8.0/MvcPhone.pdb
 /home/hemetaf/MvcPP/DigitalOnlineShop/obj/Debug/net8.0/MvcPhone.genruntimeconfig.cache
 /home/hemetaf/MvcPP/DigitalOnlineShop/obj/Debug/net8.0/ref/MvcPhone.dll
+/home/hemetaf/MvcPP/DigitalOnlineShop/bin/Debug/net8.0/Npgsql.dll
+/home/hemetaf/MvcPP/DigitalOnlineShop/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
