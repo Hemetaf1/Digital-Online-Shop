@@ -69,6 +69,7 @@ namespace DigitalOnlineShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Create([Bind("Name,Price,CategoryId")] Product product)
         {
             if (ModelState.IsValid)

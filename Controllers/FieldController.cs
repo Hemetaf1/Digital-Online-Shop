@@ -21,7 +21,8 @@ namespace DigitalOnlineShop.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Fields.ToListAsync());
+            
+            return View(await _context.Set<Field>().Include(a =>a.Category).ToListAsync());
         }
 
         public IActionResult Create()
