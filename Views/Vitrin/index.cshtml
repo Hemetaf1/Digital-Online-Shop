@@ -15,14 +15,14 @@
     }
 
     .card {
-      border: 2px solid #2d7d19; /* Thicker purple border (adjust color as needed) */
+      border: 2px solid #ea4bdd; /* Thicker purple border (adjust color as needed) */
     }
 
     .card-title, .card-text {
       color: #c887ee;  /* White text for titles and descriptions within cards */
     }
     .card-body {
-      background-color: #160120; /* Set card body background to purple */
+      background-color: #2a023a; /* Set card body background to purple */
     }
   </style>
 </head>
@@ -36,10 +36,10 @@
       </div>
       <div class="form-group me-2">
         <label for="minPrice" class="form-label">Minimum Price:</label>
-        <input type="number" class="form-control" id="minPrice" name="minPrice" min="100" max="1500" value="@(ViewData["minPrice"] ?? 100)"> </div>
+        <input type="number" class="form-control" id="minPrice" name="minPrice" min="100" max="100000" value="@(ViewData["minPrice"] ?? 100)"> </div>
       <div class="form-group me-2">
         <label for="maxPrice" class="form-label">Maximum Price:</label>
-        <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="100" max="1500" value="@(ViewData["maxPrice"] ?? 1500)"> </div>
+        <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="100" max="100000" value="@(ViewData["maxPrice"] ?? 1500)"> </div>
   //Category Search
  
       

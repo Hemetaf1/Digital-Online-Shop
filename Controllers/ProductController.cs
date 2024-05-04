@@ -41,7 +41,7 @@ namespace DigitalOnlineShop.Controllers
             
         }
 
-        // GET: Phone/Details/5
+        // GET: Product/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -77,7 +77,6 @@ namespace DigitalOnlineShop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
             return View(product);
         }
 
@@ -104,7 +103,7 @@ namespace DigitalOnlineShop.Controllers
             {
                 return NotFound();
             }
-            return View();
+            return View(product);
         }
 
         // POST: Phone/Edit/5
@@ -118,7 +117,15 @@ namespace DigitalOnlineShop.Controllers
             {
                 return NotFound();
             }
-
+            
+               
+                var product2 = await _context.Products.FindAsync(id);
+                if (product2 == null)
+                {
+                    return NotFound();
+                }
+                ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
+            
             if (ModelState.IsValid)
             {
                 try
@@ -139,7 +146,7 @@ namespace DigitalOnlineShop.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(product2);
         }
 
         // GET: Phone/Delete/5

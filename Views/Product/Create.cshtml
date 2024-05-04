@@ -1,7 +1,7 @@
 @model MvcMovie.Models.Product
 
 @{
-    ViewData["Title"] = "Create";
+ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
@@ -12,8 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
-       
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -24,12 +22,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId">
+                    <option value=""> Select Category </option>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </select>
             </div>
             <div id="fields"></div>
             <input type="submit" value="Create" class="btn btn-primary" />
-            
-            
         </form>
     </div>
 </div>
@@ -39,18 +38,18 @@
 </div>
 
 @section Scripts {
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#CategoryId').change(function () {
-                var categoryId = $(this).val();
-                $('#fields').empty();
-                $.getJSON('/Products/GetFields', { categoryId: categoryId }, function (data) {
-                    $.each(data, function (index, field) {
-                        $('#fields').append('<div class="form-group"><label class="control-label">' + field.name + '</label><input class="form-control" name="field_' + field.id + '" /></div>');
-                    });
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#CategoryId').change(function () {
+            var categoryId = $(this).val();
+            $('#fields').empty();
+            $.getJSON('/Products/GetFields', { categoryId: categoryId }, function (data) {
+                $.each(data, function (index, field) {
+                    $('#fields').append('<div class="form-group"><label class="control-label">' + field.name + '</label><input class="form-control" name="Fields[' + field.id + ']" /></div>');
                 });
             });
         });
-    </script>
+    });
+</script>
 }
