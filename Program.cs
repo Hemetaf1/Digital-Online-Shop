@@ -15,14 +15,15 @@ builder.Configuration.AddJsonFile("appsettings.json");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Retrieve the connection string after building the host
-var app = builder.Build();
-var connectionString = app.Configuration.GetConnectionString("DefaultConnection");
 
 // Add DbContext service using Npgsql
 builder.Services.AddDbContext<DigitalOnlineShopContext>(options =>
     options.UseNpgsql(connectionString));
+
+// Retrieve the connection string after building the host
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

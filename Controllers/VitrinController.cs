@@ -20,29 +20,39 @@ namespace MvcPhone.Controllers
     }
 
     // GET: Phone
-    public async Task<IActionResult> Index(string searchString, decimal? minPrice, decimal? maxPrice)
+    public async Task<IActionResult> Index(string searchString, decimal? minPrice, decimal? maxPrice )
     {
-        var phones = from m in _context.Products
+        var products = from m in _context.Products
                     select m;
 
         if (!String.IsNullOrEmpty(searchString))
         {
-            phones = phones.Where(s => s.Name!.Contains(searchString));
+            products = products.Where(s => s.Name!.Contains(searchString));
         }
 
         if (minPrice.HasValue)
         {
-            phones = phones.Where(p => p.Price >= minPrice);
+            products = products.Where(p => p.Price >= minPrice);
         }
 
         if (maxPrice.HasValue)
         {
-            phones = phones.Where(p => p.Price <= maxPrice);
+            products = products.Where(p => p.Price <= maxPrice);
         }
+/*       if (!String.IsNullOrEmpty(Category))
+        {
+            products = products.Where(s => s.Category.Contains(Category));
+        } */
+/* Search by Field
+        if (!String.IsNullOrEmpty(searchString))
+        {
+            products = products.Where(s => s.Name!.Contains(searchString));
+        }
+*/
 
         ViewData["currentFilter"] = searchString; // Store current filter for pre-population
 
-        return View(await phones.ToListAsync());
+        return View(await products.ToListAsync());
     }
 
     public async Task<IActionResult> Details(int? id)
@@ -52,14 +62,14 @@ namespace MvcPhone.Controllers
             return NotFound();
         }
 
-        var phone = await _context.Products
+        var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
-        if (phone == null)
+        if (product == null)
         {
             return NotFound();
         }
 
-        return View(phone);
+        return View(product);
     }
 }
 

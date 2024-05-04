@@ -18,6 +18,16 @@ namespace DigitalOnlineShop.Controllers
         {
             _context = context;
         }
+        public IActionResult Create()
+        {
+            // Get all categories from the database
+            var categories = _context.Categories.ToList();
+
+            // Pass the categories to the view using ViewBag
+            ViewBag.ParentCategoryId = new SelectList(categories, "Id", "Name");
+
+            return View();
+        }
 
         public async Task<IActionResult> Index(string searchString)
         {
@@ -36,10 +46,11 @@ namespace DigitalOnlineShop.Controllers
 
             return View(await categories.ToListAsync());
         }
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,CategoryId")] Category category)
+        public async Task<IActionResult> Create([Bind("Id,Name,parent_id")] Category category)
         {
             if (ModelState.IsValid)
             {

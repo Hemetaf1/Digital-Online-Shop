@@ -8572,19 +8572,19 @@
     ]
   },
   "packageFolders": {
-    "/home/hemetaf/.nuget/packages/": {}
+    "C:\\Users\\fatemeh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/hemetaf/MvcPP/DigitalOnlineShop/MvcPhone.csproj",
+      "projectUniqueName": "C:\\Users\\fatemeh\\RiderProjects\\Digital-Online-Shop\\MvcPhone.csproj",
       "projectName": "MvcPhone",
-      "projectPath": "/home/hemetaf/MvcPP/DigitalOnlineShop/MvcPhone.csproj",
-      "packagesPath": "/home/hemetaf/.nuget/packages/",
-      "outputPath": "/home/hemetaf/MvcPP/DigitalOnlineShop/obj/",
+      "projectPath": "C:\\Users\\fatemeh\\RiderProjects\\Digital-Online-Shop\\MvcPhone.csproj",
+      "packagesPath": "C:\\Users\\fatemeh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fatemeh\\RiderProjects\\Digital-Online-Shop\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/hemetaf/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\fatemeh\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -8664,7 +8664,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

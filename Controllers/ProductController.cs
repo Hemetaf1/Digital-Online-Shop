@@ -13,7 +13,7 @@ namespace DigitalOnlineShop.Controllers
     public class ProductController : Controller
     {
         private readonly DigitalOnlineShopContext _context;
-
+        
         public ProductController(DigitalOnlineShopContext context)
         {
             _context = context;
@@ -92,7 +92,7 @@ namespace DigitalOnlineShop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View();
         }
 
         // GET: Phone/Edit/5
@@ -108,7 +108,7 @@ namespace DigitalOnlineShop.Controllers
             {
                 return NotFound();
             }
-            return View(product);
+            return View();
         }
 
         // POST: Phone/Edit/5
