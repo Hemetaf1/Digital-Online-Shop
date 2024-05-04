@@ -30,6 +30,7 @@ namespace DigitalOnlineShop.Controllers
 
                 var products = from m in _context.Products
                             select m;
+                _context.Set<Product>().Include(a=>a.Category).ToList();
 
                 if (!String.IsNullOrEmpty(searchString))
                 {
@@ -58,33 +59,17 @@ namespace DigitalOnlineShop.Controllers
             return View(product);
         }
 
-        // GET: Phone/Create
-/*       public IActionResult Create()
+        
+        // GET: Product/Create
+        public IActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name");
             return View();
         }
 
-        // POST: Phone/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        
-        [HttpPost]
-        public IActionResult AddCategory(string categoryName)
-        {
-            _shop.AddCategory(categoryName);
-            return RedirectToAction("Index", "Home"); // Redirect to home page after adding category
-        }
-
-        [HttpPost]
-        public IActionResult EditCategory(int categoryId, string newName)
-        {
-            _shop.EditCategory(categoryId, newName);
-            return RedirectToAction("Index", "Home"); // Redirect to home page after editing category
-        }
-*/
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Price,CategoryId")] Product product)
+        public async Task<IActionResult> Create([Bind("Name,Price,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -92,10 +77,21 @@ namespace DigitalOnlineShop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
+            return View(product);
         }
 
-        // GET: Phone/Edit/5
+        public async Task<JsonResult> GetFields(int categoryId)
+        {
+            var fields = await _context.Fields.Where(f => f.CategoryId == categoryId).ToListAsync();
+            return Json(fields);
+        }
+        
+        
+        
+        
+        
+        // GET: Product/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -179,7 +175,7 @@ namespace DigitalOnlineShop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool ProductExists(int? id)
         {
             return _context.Products.Any(e => e.Id == id);
         }

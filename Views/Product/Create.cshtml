@@ -12,22 +12,24 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+       
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-       
-        
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-       
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
+            <div id="fields"></div>
+            <input type="submit" value="Create" class="btn btn-primary" />
+            
+            
         </form>
     </div>
 </div>
@@ -37,5 +39,18 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#CategoryId').change(function () {
+                var categoryId = $(this).val();
+                $('#fields').empty();
+                $.getJSON('/Products/GetFields', { categoryId: categoryId }, function (data) {
+                    $.each(data, function (index, field) {
+                        $('#fields').append('<div class="form-group"><label class="control-label">' + field.name + '</label><input class="form-control" name="field_' + field.id + '" /></div>');
+                    });
+                });
+            });
+        });
+    </script>
 }
