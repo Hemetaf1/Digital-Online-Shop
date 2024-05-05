@@ -45,20 +45,4 @@ ViewData["Title"] = "Create";
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#CategoryId').change(function () {
-            var categoryId = $(this).val();
-            $('#fields').empty();
-            $.getJSON('/Product/GetFields', { categoryId: categoryId }, function (data) {
-                $.each(data, function (index, field) {
-                    $('#fields').append('<div class="form-group"><label class="control-label">' + field.name + '</label><input class="form-control" name="FieldValues[' + index + '].Value" /><input type="hidden" name="FieldValues[' + index + '].FieldId" value="' + field.id + '" /></div>');
-                });
-            });
-        });
-    });
 
-</script>
-}
