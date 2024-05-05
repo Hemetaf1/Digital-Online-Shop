@@ -29,47 +29,56 @@
 
 <body>
 <div class="container">
-<form method="get" asp-action="Index" class="d-flex mb-3">
-    <div class="form-group me-2">
-        <label for="searchString" class="form-label">Search by Name:</label>
-        <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewData["currentFilter"]"/>
-    </div>
-    <div class="form-group me-2">
-        <label for="minPrice" class="form-label">Minimum Price:</label>
-        <input type="number" class="form-control" id="minPrice" name="minPrice" min="100" max="100000" value="@(ViewData["minPrice"] ?? 100)">
-    </div>
-    <div class="form-group me-2">
-        <label for="maxPrice" class="form-label">Maximum Price:</label>
-        <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="100" max="100000" value="@(ViewData["maxPrice"] ?? 1500)">
-    </div>
+    <form method="get" asp-action="Index" class="d-flex mb-3">
+        <div class="form-group me-2">
+            <label for="searchString" class="form-label">Search by Name:</label>
+            <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewData["currentFilter"]"/>
+        </div>
+        <div class="form-group me-2">
+            <label for="minPrice" class="form-label">Minimum Price:</label>
+            <input type="number" class="form-control" id="minPrice" name="minPrice" min="100" max="100000" value="@(ViewData["minPrice"] ?? 100)">
+        </div>
+        <div class="form-group me-2">
+            <label for="maxPrice" class="form-label">Maximum Price:</label>
+            <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="100" max="100000" value="@(ViewData["maxPrice"] ?? 100000)">
+        </div>
+
+        <div class="form-group me-2">
+
+            <label for="CategoryId" class="control-label"></label>
+            <select for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                <option value=""> Select Category </option>
+                <span for="CategoryId" class="text-danger"></span>
+            </select>
+        </div>
 
 
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
 
-<br/>
+    <br/>
 
-@if (Model.Any())
-{
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach (var item in Model)
-        {
-            <div class="col">
-                <div class="card">
-                    <a asp-action="Details" asp-route-id="@item.Id">
-                        <img src="@item.ImageUrl" alt="@item.Name" class="card-img-top"> <!-- Add this line -->
-                        <div class="card-body">
-                            <h3 class="card-title">@item.Name</h3>
-                            <p class="card-text">@item.Price.ToString("C")</p>
-                        </div>
-                    </a>
+    @if (Model.Any())
+    {
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col">
+                    <div class="card">
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            <img src="@item.ImageUrl" alt="@item.Name" class="card-img-top"> <!-- Add this line -->
+                            <div class="card-body">
+                                <h3 class="card-title">@item.Name</h3>
+                                <p class="card-text">@item.Price.ToString("C")</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
-}
+            }
+        </div>
+    }
 
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
 </div>
 </body>
 </html>

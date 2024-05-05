@@ -20,14 +20,18 @@ namespace MvcPhone.Controllers
         }
 
         // GET: Phone
-        public async Task<IActionResult> Index(string searchString, decimal? minPrice, decimal? maxPrice)
+
+        public async Task<IActionResult> Index(string searchString, decimal? minPrice, decimal? maxPrice, int? categoryId)
         {
-            var products = from m in _context.Products
-                select m;
+            var products = _context.Products.AsQueryable();
+            products = products
+                .Include(p => p.Category);
+            ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name");
+
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                products = products.Where(s => s.Name!.Contains(searchString));
+                products = products.Where(p => p.Name.Contains(searchString));
             }
 
             if (minPrice.HasValue)
@@ -39,17 +43,17 @@ namespace MvcPhone.Controllers
             {
                 products = products.Where(p => p.Price <= maxPrice);
             }
-/*       if (!String.IsNullOrEmpty(Category))
-        {
-            products = products.Where(s => s.Category.Contains(Category));
-        } */
-/* Search by Field
-        if (!String.IsNullOrEmpty(searchString))
-        {
-            products = products.Where(s => s.Name!.Contains(searchString));
-        }
-*/
 
+            if (categoryId.HasValue)
+            {
+                products = products.Where(p => p.CategoryId == categoryId);
+            }
+
+/*            if (fieldId.HasValue)
+            {
+                products = products.Where(s => s.FieldId == fieldId);
+            }
+*/  
             ViewData["currentFilter"] = searchString; // Store current filter for pre-population
 
             return View(await products.ToListAsync());

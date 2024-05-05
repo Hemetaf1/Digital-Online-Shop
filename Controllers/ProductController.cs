@@ -21,16 +21,15 @@ namespace DigitalOnlineShop.Controllers
         {
             if (_context.Products == null)
             {
-                return Problem("Entity set 'MvcMovieContext.Phone'  is null.");
+                throw new Exception("Entity set 'MvcMovieContext.Phone'  is null.");
             }
 
-            var products = from m in _context.Products
-                select m;
-            _context.Set<Product>().Include(a => a.Category).ToList();
+            var products = _context.Products.AsQueryable();
+            _context.Set<Product>().Include(p=>p.Category).ToList();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                products = products.Where(s => s.Name!.Contains(searchString));
+              products = products.Where(s => s.Name!.Contains(searchString));
             }
 
             return View(await products.ToListAsync());

@@ -38,7 +38,7 @@ namespace MvcPhone.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -66,7 +66,7 @@ namespace MvcPhone.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Fields");
+                    b.ToTable("Fields", (string)null);
                 });
 
             modelBuilder.Entity("MvcMovie.Models.FieldValue", b =>
@@ -92,7 +92,7 @@ namespace MvcPhone.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("FieldValue");
+                    b.ToTable("FieldValue", (string)null);
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Product", b =>
@@ -120,7 +120,7 @@ namespace MvcPhone.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
 
                     b.HasData(
                         new

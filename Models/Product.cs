@@ -12,6 +12,9 @@ public class Product
     [Required]
     public string? Name { get; set; }
     
+    
+    [ForeignKey("CategoryId")]
+
     public int? CategoryId { get; set; }
     public Category? Category { get; set; }
     
