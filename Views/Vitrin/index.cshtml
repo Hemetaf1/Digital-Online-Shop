@@ -5,74 +5,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-  <title>Mobile Products</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true"/>
+    <title>Mobile Products</title>
 
-  <style>
+    <style>
     body {
-      background-color: #06251a;  /* Black background */
-      color: #f3bcf5;             /* White text for better contrast */
+      background-color: #bf6197;  /* Black background */
+      color: #772623;             /* White text for better contrast */
     }
 
     .card {
-      border: 2px solid #ea4bdd; /* Thicker purple border (adjust color as needed) */
+      border: 2px solid #b892b3; /* Thicker purple border (adjust color as needed) */
     }
 
     .card-title, .card-text {
-      color: #c887ee;  /* White text for titles and descriptions within cards */
+      color: #c8a1d8;  /* White text for titles and descriptions within cards */
     }
     .card-body {
-      background-color: #2a023a; /* Set card body background to purple */
+      background-color: #3e1350; /* Set card body background to purple */
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <form method="get" asp-action="Index" class="d-flex mb-3">
-      <div class="form-group me-2">
+<div class="container">
+<form method="get" asp-action="Index" class="d-flex mb-3">
+    <div class="form-group me-2">
         <label for="searchString" class="form-label">Search by Name:</label>
-        <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewData["currentFilter"]" />
-      </div>
-      <div class="form-group me-2">
+        <input type="text" id="searchString" name="searchString" class="form-control" value="@ViewData["currentFilter"]"/>
+    </div>
+    <div class="form-group me-2">
         <label for="minPrice" class="form-label">Minimum Price:</label>
-        <input type="number" class="form-control" id="minPrice" name="minPrice" min="100" max="100000" value="@(ViewData["minPrice"] ?? 100)"> </div>
-      <div class="form-group me-2">
+        <input type="number" class="form-control" id="minPrice" name="minPrice" min="100" max="100000" value="@(ViewData["minPrice"] ?? 100)">
+    </div>
+    <div class="form-group me-2">
         <label for="maxPrice" class="form-label">Maximum Price:</label>
-        <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="100" max="100000" value="@(ViewData["maxPrice"] ?? 1500)"> </div>
-  //Category Search
- 
-      
-      
-      //Field Search
+        <input type="number" class="form-control" id="maxPrice" name="maxPrice" min="100" max="100000" value="@(ViewData["maxPrice"] ?? 1500)">
+    </div>
 
 
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
-      <button type="submit" class="btn btn-primary">Search</button>
-    </form>
+<br/>
 
-    <br />
-
-    @if (Model.Any())
-    {
-      <div class="row row-cols-1 row-cols-md-3 g-4">
+@if (Model.Any())
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach (var item in Model)
         {
-          <div class="col">
-            <div class="card">
-              <a asp-action="Details" asp-route-id="@item.Id">
-                <div class="card-body">
-                  <h3 class="card-title">@item.Name</h3>
-                  <p class="card-text">@item.Price.ToString("C")</p>
+            <div class="col">
+                <div class="card">
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <img src="@item.ImageUrl" alt="@item.Name" class="card-img-top"> <!-- Add this line -->
+                        <div class="card-body">
+                            <h3 class="card-title">@item.Name</h3>
+                            <p class="card-text">@item.Price.ToString("C")</p>
+                        </div>
+                    </a>
                 </div>
-              </a>
             </div>
-          </div>
         }
-      </div>
-    }
-  </div>
+    </div>
+}
 
-  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+</div>
 </body>
 </html>

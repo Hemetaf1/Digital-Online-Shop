@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MvcPhone")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bce1d6463ef78da93e02cc930ff9f6b15bd3f0b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a637ada8952414dbb52f4c2374a59583ebb03c28")]
 [assembly: System.Reflection.AssemblyProductAttribute("MvcPhone")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MvcPhone")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

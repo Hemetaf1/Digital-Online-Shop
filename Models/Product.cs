@@ -15,15 +15,13 @@ public class Product
     public int? CategoryId { get; set; }
     public Category? Category { get; set; }
     
-
     [DataType(DataType.Currency)]
     [Required]
     public decimal Price { get; set; }
 
     public IEnumerable<FieldValue>? FieldValues {get; set;}
 
+    public string? ImageUrl { get; set; } // Add this line
 
     //public object Title { get; internal set; }
 }
-
-
