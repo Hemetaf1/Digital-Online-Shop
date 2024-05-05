@@ -2,6 +2,7 @@ using DigitalOnlineShop.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using MvcMovie.Models;
 
 namespace DigitalOnlineShop.Controllers
@@ -24,13 +25,10 @@ namespace DigitalOnlineShop.Controllers
                 throw new Exception("Entity set 'MvcMovieContext.Phone'  is null.");
             }
 
-            var products = _context.Products.AsQueryable();
-            _context.Set<Product>()
-                .Include(p => p.Category).ToList();
-        //??
-            _context.Set<FieldValue>()
-                .Include(p => p.Product)
-                .Include(p=> p.Field).ToList();
+            var products = _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.FieldValues)
+                .AsQueryable();
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -84,7 +82,8 @@ namespace DigitalOnlineShop.Controllers
 
             return View(product);
         }
-
+        
+//???
         public async Task<JsonResult> GetFields(int categoryId)
         {
             var fields = await _context.Fields.Where(f => f.CategoryId == categoryId).ToListAsync();

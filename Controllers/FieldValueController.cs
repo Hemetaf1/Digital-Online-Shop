@@ -20,8 +20,14 @@ namespace DigitalOnlineShop.Controllers
         }
         
         // GET: FieldValue
-        public async Task<IActionResult> Index(FieldValues)
+        public async Task<IActionResult> Index()
+        
         {
+
+            var fieldValues = _context.FieldV
+                .Include(p => p.Field)
+                .Include(p => p.P)
+                .AsQueryable();
            // var fieldValues = _context.FieldValues.AsQueryable();
 
             return View(await fieldValues.ToListAsync());
