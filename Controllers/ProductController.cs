@@ -43,7 +43,7 @@ namespace DigitalOnlineShop.Controllers
             {
                 return NotFound();
             }
-
+            
             var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
