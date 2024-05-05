@@ -1,0 +1,60 @@
+@model IEnumerable<MvcMovie.Models.FieldValue>
+
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true"/>
+    <title>Mobile Products</title>
+
+    <style>
+        .card-body {
+            background-color: #3e1350; /* Set card body background to purple */
+        }
+    </style>
+</head>
+</html>
+<form asp-controller="Product" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Value)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>

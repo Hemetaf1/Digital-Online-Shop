@@ -38,7 +38,7 @@ namespace MvcPhone.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -66,7 +66,7 @@ namespace MvcPhone.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Fields", (string)null);
+                    b.ToTable("Fields");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.FieldValue", b =>
@@ -84,6 +84,7 @@ namespace MvcPhone.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Value")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -92,7 +93,7 @@ namespace MvcPhone.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("FieldValue", (string)null);
+                    b.ToTable("FieldValue");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Product", b =>
@@ -120,7 +121,7 @@ namespace MvcPhone.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
 
                     b.HasData(
                         new

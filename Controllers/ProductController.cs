@@ -25,11 +25,16 @@ namespace DigitalOnlineShop.Controllers
             }
 
             var products = _context.Products.AsQueryable();
-            _context.Set<Product>().Include(p=>p.Category).ToList();
+            _context.Set<Product>()
+                .Include(p => p.Category).ToList();
+        //??
+            _context.Set<FieldValue>()
+                .Include(p => p.Product)
+                .Include(p=> p.Field).ToList();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-              products = products.Where(s => s.Name!.Contains(searchString));
+                products = products.Where(s => s.Name!.Contains(searchString));
             }
 
             return View(await products.ToListAsync());
@@ -42,7 +47,7 @@ namespace DigitalOnlineShop.Controllers
             {
                 return NotFound();
             }
-            
+
             var product = await _context.Products
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
@@ -62,11 +67,17 @@ namespace DigitalOnlineShop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public  IActionResult Create([Bind("Name,Price,CategoryId")] Product product)
+        public IActionResult Create([Bind("Name,Price,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product); 
+                _context.Add(product);
+                foreach (var fieldValue in )
+                {
+                    fieldValue.ProductId = product.Id;
+                    _context.Add(fieldValue);
+                }
+
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -97,6 +108,7 @@ namespace DigitalOnlineShop.Controllers
             {
                 return NotFound();
             }
+
             ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name", product.CategoryId);
 
             return View(product);
@@ -119,7 +131,7 @@ namespace DigitalOnlineShop.Controllers
             {
                 return NotFound();
             }
-            
+
             if (ModelState.IsValid)
             {
                 try

@@ -23,11 +23,16 @@ ViewData["Title"] = "Create";
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
                 <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId">
-                    <option value=""> Select Category </option>
+                    <option value=""
+                    
+                            > Select Category </option>
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </select>
             </div>
-            
+            <div id="fields">
+                
+            </div>
+
             
             <input type = "file" alt="Image"/>
             <div id="ImageUpload" runat="server"></div>7    
@@ -47,12 +52,13 @@ ViewData["Title"] = "Create";
         $('#CategoryId').change(function () {
             var categoryId = $(this).val();
             $('#fields').empty();
-            $.getJSON('/Products/GetFields', { categoryId: categoryId }, function (data) {
+            $.getJSON('/Product/GetFields', { categoryId: categoryId }, function (data) {
                 $.each(data, function (index, field) {
-                    $('#fields').append('<div class="form-group"><label class="control-label">' + field.name + '</label><input class="form-control" name="Fields[' + field.id + ']" /></div>');
+                    $('#fields').append('<div class="form-group"><label class="control-label">' + field.name + '</label><input class="form-control" name="FieldValues[' + index + '].Value" /><input type="hidden" name="FieldValues[' + index + '].FieldId" value="' + field.id + '" /></div>');
                 });
             });
         });
     });
+
 </script>
 }
